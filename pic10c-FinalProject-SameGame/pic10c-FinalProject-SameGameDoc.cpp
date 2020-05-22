@@ -45,6 +45,7 @@ BOOL Cpic10cFinalProjectSameGameDoc::OnNewDocument()
 
 	// TODO: add reinitialization code here
 	// (SDI documents will reuse this document)
+	m_board.SetupBoard();
 
 	return TRUE;
 }

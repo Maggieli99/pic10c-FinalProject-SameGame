@@ -4,12 +4,14 @@
 
 
 #pragma once
+#include "CSameGameBoard.h"
 
 
 class Cpic10cFinalProjectSameGameDoc : public CDocument
 {
 protected: // create from serialization only
 	Cpic10cFinalProjectSameGameDoc() noexcept;
+	virtual ~Cpic10cFinalProjectSameGameDoc();
 	DECLARE_DYNCREATE(Cpic10cFinalProjectSameGameDoc)
 
 // Attributes
@@ -17,6 +19,17 @@ public:
 
 // Operations
 public:
+	// Functions for accessing the game board
+	COLORREF GetBoardSpace(int row, int col) {
+		return m_board.GetBoardSpace(row, col);
+	}
+	void SetUpBoard() { m_board.SetupBoard(); }
+	int GetWidth() { return m_board.GetWidth(); }
+	int GetHeight() { return m_board.GetHeight(); }
+	int GetColumns() { return m_board.GetColumns(); }
+	int GetRows() { return m_board.GetRows(); }
+	void DeleteBoard() { m_board.DeleteBoard(); }
+
 
 // Overrides
 public:
@@ -36,6 +49,7 @@ public:
 #endif
 
 protected:
+	CSameGameBoard m_board; // Create the game board object
 
 // Generated message map functions
 protected:
