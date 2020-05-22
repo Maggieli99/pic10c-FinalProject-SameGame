@@ -34,3 +34,34 @@ COLORREF CSameGameBoard::GetBoardSpace(int row, int col) {
     }
     return m_arrColors[m_arrBoard[row][col]];
 }
+
+void CSameGameBoard::DeleteBoard() {
+    // Delete a board if it's not NULL
+    if (m_arrBoard != NULL) {
+        for (int row = 0; row < m_nRows; row++) {
+            if (m_arrBoard[row] != NULL) {
+                delete[] m_arrBoard[row]; // Delete each row first 
+                m_arrBoard[row] = NULL;
+            }
+        }
+        delete[] m_arrBoard; // Finally delete the array of rows
+        m_arrBoard = NULL;
+    }
+}
+
+void CSameGameBoard::CreateBoard() {
+    // Delete the board if it is not NULL
+    if (m_arrBoard != NULL) {
+        DeleteBoard();
+    }
+    m_arrBoard = new int* [m_nRows]; // Create the array of rows
+    // Create each row
+    for (int row = 0; row < m_nRows; row++) {
+        m_arrBoard[row] = new int[m_nColumns];
+        // Set each square to be empty
+        for (int col = 0; col < m_nColumns; col++) {
+            m_arrBoard[row][col] = 0; 
+        }
+    }
+
+}
