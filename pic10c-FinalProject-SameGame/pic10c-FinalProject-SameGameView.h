@@ -26,6 +26,8 @@ protected:
 
 // Implementation
 public:
+	void ResizeWindow();
+
 	virtual ~Cpic10cFinalProjectSameGameView();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
@@ -37,6 +39,8 @@ protected:
 // Generated message map functions
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	virtual void OnInitialUpdate();
 };
 
 #ifndef _DEBUG  // debug version in pic10c-FinalProject-SameGameView.cpp

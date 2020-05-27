@@ -189,7 +189,10 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="pic10c-FinalProject-SameGame.h" />
     <ClInclude Include="pic10c-FinalProject-SameGameDoc.h" />
-    <ClInclude Include="pic10c-FinalProject-SameGameView.h" />
+    <ClInclude Include="pic10c-FinalProject-SameGameView.h">
+      <FileType>CppForm</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

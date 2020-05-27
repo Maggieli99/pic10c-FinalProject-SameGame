@@ -11,7 +11,6 @@ class Cpic10cFinalProjectSameGameDoc : public CDocument
 {
 protected: // create from serialization only
 	Cpic10cFinalProjectSameGameDoc() noexcept;
-	virtual ~Cpic10cFinalProjectSameGameDoc();
 	DECLARE_DYNCREATE(Cpic10cFinalProjectSameGameDoc)
 
 // Attributes
