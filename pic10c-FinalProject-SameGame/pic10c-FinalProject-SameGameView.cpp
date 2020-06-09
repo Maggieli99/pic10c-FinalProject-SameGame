@@ -24,6 +24,13 @@ IMPLEMENT_DYNCREATE(Cpic10cFinalProjectSameGameView, CView)
 
 BEGIN_MESSAGE_MAP(Cpic10cFinalProjectSameGameView, CView)
     ON_WM_LBUTTONDOWN()
+    ON_WM_ERASEBKGND()
+    ON_COMMAND(ID_LEVEL_3COLORS, &Cpic10cFinalProjectSameGameView::OnLevel3colors)
+    ON_COMMAND(ID_LEVEL_4COLORS, &Cpic10cFinalProjectSameGameView::OnLevel4colors)
+    ON_COMMAND(ID_LEVEL_5COLORS, &Cpic10cFinalProjectSameGameView::OnLevel5colors)
+    ON_UPDATE_COMMAND_UI(ID_LEVEL_3COLORS, &Cpic10cFinalProjectSameGameView::OnUpdateLevel3colors)
+    ON_UPDATE_COMMAND_UI(ID_LEVEL_4COLORS, &Cpic10cFinalProjectSameGameView::OnUpdateLevel4colors)
+    ON_UPDATE_COMMAND_UI(ID_LEVEL_5COLORS, &Cpic10cFinalProjectSameGameView::OnUpdateLevel5colors)
 END_MESSAGE_MAP()
 
 // Cpic10cFinalProjectSameGameView construction/destruction
@@ -178,11 +185,76 @@ void Cpic10cFinalProjectSameGameView::OnLButtonDown(UINT nFlags, CPoint point)
             //  Get the count remaining
             int remaining = pDoc->GetRemainingCount();
             CString message;
-            message.Format(_T("No more moves left\nBlocks remaining: %d"), remaining);
+            if (remaining == 0) {
+                message.Format(_T("You win!"));
+            }
+            else {
+                message.Format(_T("No more moves left\nBlocks remaining: %d"), remaining);
+            }
 
             MessageBox(message, _T("Game Over"), MB_OK | MB_ICONINFORMATION); //  Display the results to the user
         }
     }
     //  Default OnLButtonDown
     CView::OnLButtonDown(nFlags, point);
+}
+
+void Cpic10cFinalProjectSameGameView::OnLevel3colors() {
+    Cpic10cFinalProjectSameGameDoc* pDoc = GetDocument(); //Get a pointer to the document
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
+    pDoc->SetNumColors(3); // Set the number of colors
+
+    // Redraw the game board
+    Invalidate();
+    UpdateWindow();
+}
+
+void Cpic10cFinalProjectSameGameView::OnLevel4colors() {
+    Cpic10cFinalProjectSameGameDoc* pDoc = GetDocument(); //Get a pointer to the document
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
+    pDoc->SetNumColors(4); // Set the number of colors
+
+    // Redraw the game board
+    Invalidate();
+    UpdateWindow();
+}
+
+void Cpic10cFinalProjectSameGameView::OnLevel5colors() {
+    Cpic10cFinalProjectSameGameDoc* pDoc = GetDocument(); //Get a pointer to the document
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
+    pDoc->SetNumColors(5); // Set the number of colors
+
+    // Redraw the game board
+    Invalidate();
+    UpdateWindow();
+}
+
+void Cpic10cFinalProjectSameGameView::OnUpdateLevel3colors(CCmdUI* pCmdUI) {
+    Cpic10cFinalProjectSameGameDoc* pDoc = GetDocument(); // Get a pointer to the document
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
+    pCmdUI->SetCheck(pDoc->GetNumColors() == 3); // Check if it is the right level
+}
+
+void Cpic10cFinalProjectSameGameView::OnUpdateLevel4colors(CCmdUI* pCmdUI) {
+    Cpic10cFinalProjectSameGameDoc* pDoc = GetDocument(); // Get a pointer to the document
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
+    pCmdUI->SetCheck(pDoc->GetNumColors() == 4); // Check if it is the right level
+}
+
+void Cpic10cFinalProjectSameGameView::OnUpdateLevel5colors(CCmdUI* pCmdUI) {
+    Cpic10cFinalProjectSameGameDoc* pDoc = GetDocument(); // Get a pointer to the document
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
+    pCmdUI->SetCheck(pDoc->GetNumColors() == 5); // Check if it is the right level
 }

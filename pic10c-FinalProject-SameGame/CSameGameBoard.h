@@ -20,13 +20,16 @@ public:
 	int GetRemainingCount() const { return m_nRemaining; } //Get the number of blocks remaining
 	int DeleteBlocks(int row, int col); // Delete all adjacent blocks
 
+	int GetNumColors() { return m_nColors; } 
+	void SetNumColors(int nColors) { m_nColors >= 3 && nColors <= 5 ? nColors : m_nColors; }
+
 private:
 	void CreateBoard(); // Function to create the board and allocate memory
 	enum Direction { DIRECTION_UP, DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT }; // Direction enumertion for deleting blocks
 	int DeleteNeighborBlocks(int row, int col, int color, Direction direction); // Recursive helper function for deleting blocks
 	void CompactBoard(); // Function to compact the board after blocks are eliminated
 	int** m_arrBoard; // 2D array pointer
-	COLORREF m_arrColors[4]; // List of colors, 0 is background and 1-3 are piece colors
+	static COLORREF m_arrColors[6]; // List of colors, 0 is background and 1-5 are piece colors
 
 	// Board size information
 	int m_nColumns;
@@ -35,4 +38,5 @@ private:
 	int m_nWidth;
 
 	int m_nRemaining; // Number of blocks remaining
+	int m_nColors; // Number of colors of blocks of the game
 };

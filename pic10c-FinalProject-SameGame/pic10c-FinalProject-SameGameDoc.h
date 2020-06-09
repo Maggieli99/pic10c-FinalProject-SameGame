@@ -10,7 +10,7 @@
 class Cpic10cFinalProjectSameGameDoc : public CDocument
 {
 protected: // create from serialization only
-	Cpic10cFinalProjectSameGameDoc() noexcept;
+	Cpic10cFinalProjectSameGameDoc();
 	DECLARE_DYNCREATE(Cpic10cFinalProjectSameGameDoc)
 
 // Attributes
@@ -31,6 +31,8 @@ public:
 	bool IsGameOver() { return m_board.IsGameOver(); }
 	int DeleteBlocks(int row, int col) { return m_board.DeleteBlocks(row, col); }
 	int GetRemainingCount() { return m_board.GetRemainingCount(); }
+	int GetNumColors() { return m_board.GetNumColors(); }
+	void SetNumColors(int nColors);
 
 // Overrides
 public:

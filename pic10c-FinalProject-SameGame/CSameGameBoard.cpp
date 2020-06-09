@@ -4,11 +4,15 @@
 #include <ctime>
 #include <time.h>
 
-CSameGameBoard::CSameGameBoard() :m_arrBoard(NULL), m_nColumns(15), m_nRows(15), m_nHeight(35), m_nWidth(35), m_nRemaining(0) { 
+COLORREF CSameGameBoard::m_arrColors[6];
+
+CSameGameBoard::CSameGameBoard() :m_arrBoard(NULL), m_nColumns(15), m_nRows(15), m_nHeight(35), m_nWidth(35), m_nRemaining(0), m_nColors(5) { 
     m_arrColors[0] = RGB(0, 0, 0);
     m_arrColors[1] = RGB(255, 0, 0);
     m_arrColors[2] = RGB(255, 255, 64);
     m_arrColors[3] = RGB(0, 0, 255);
+    m_arrColors[4] = RGB(0, 255, 0);
+    m_arrColors[5] = RGB(0, 255, 255);
     SetupBoard(); // Create and setup the board
 }
 
@@ -27,7 +31,7 @@ void CSameGameBoard::SetupBoard() {
     // Set each square to a color randomly
     for (int row = 0; row < m_nRows; row++) {
         for (int col = 0; col < m_nColumns; col++) {
-            m_arrBoard[row][col] = (rand() % 3) + 1; // I want a random game board every time I play it. I may want to improve this part later.
+            m_arrBoard[row][col] = (rand() % m_nColors) + 1; 
         }
     }
     m_nRemaining = m_nRows * m_nColumns; // Set the number of spaces remaining
@@ -114,13 +118,13 @@ int CSameGameBoard::DeleteNeighborBlocks(int row, int col, int color, Direction 
         nCount += DeleteNeighborBlocks(row - 1, col, color, DIRECTION_DOWN);
     }
     if (direction != DIRECTION_DOWN) {
-        nCount += DeleteNeighborBlocks(row - 1, col, color, DIRECTION_UP);
+        nCount += DeleteNeighborBlocks(row + 1, col, color, DIRECTION_UP);
     }
     if (direction != DIRECTION_LEFT) {
-        nCount += DeleteNeighborBlocks(row - 1, col, color, DIRECTION_RIGHT);
+        nCount += DeleteNeighborBlocks(row, col - 1, color, DIRECTION_RIGHT);
     }
     if (direction != DIRECTION_RIGHT) {
-        nCount += DeleteNeighborBlocks(row - 1, col, color, DIRECTION_LEFT);
+        nCount += DeleteNeighborBlocks(row, col + 1, color, DIRECTION_LEFT);
     }
     return nCount;
 }
@@ -167,6 +171,7 @@ void CSameGameBoard::CompactBoard(void) {
         }
     }
 }
+
 
 bool CSameGameBoard::IsGameOver() const {
     for (int col = 0; col < m_nColumns; col++) {

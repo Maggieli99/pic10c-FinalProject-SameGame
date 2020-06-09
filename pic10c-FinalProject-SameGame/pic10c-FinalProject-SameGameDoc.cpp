@@ -28,7 +28,7 @@ END_MESSAGE_MAP()
 
 // Cpic10cFinalProjectSameGameDoc construction/destruction
 
-Cpic10cFinalProjectSameGameDoc::Cpic10cFinalProjectSameGameDoc() noexcept
+Cpic10cFinalProjectSameGameDoc::Cpic10cFinalProjectSameGameDoc() 
 {
 	// TODO: add one-time construction code here
 
@@ -48,6 +48,11 @@ BOOL Cpic10cFinalProjectSameGameDoc::OnNewDocument()
 	m_board.SetupBoard();
 
 	return TRUE;
+}
+
+void Cpic10cFinalProjectSameGameDoc::SetNumColors(int nColors) {
+	m_board.SetNumColors(nColors); // Set the number of colors
+	m_board.SetupBoard(); // Reset the game board
 }
 
 

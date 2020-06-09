@@ -42,6 +42,15 @@ protected:
 public:
 	virtual void OnInitialUpdate();
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+
+	afx_msg void OnLevel3colors();
+	afx_msg void OnLevel4colors();
+	afx_msg void OnLevel5colors();
+
+	// Functions to update the menu options
+	afx_msg void OnUpdateLevel3colors(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateLevel4colors(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateLevel5colors(CCmdUI* pCmdUI);
 };
 
 #ifndef _DEBUG  // debug version in pic10c-FinalProject-SameGameView.cpp
