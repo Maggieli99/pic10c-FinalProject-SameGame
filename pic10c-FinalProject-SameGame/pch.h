@@ -9,5 +9,6 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
+#include "pic10c-FinalProject-SameGame.h"
 
 #endif //PCH_H

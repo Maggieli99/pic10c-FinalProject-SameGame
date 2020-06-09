@@ -23,11 +23,12 @@
 IMPLEMENT_DYNCREATE(Cpic10cFinalProjectSameGameView, CView)
 
 BEGIN_MESSAGE_MAP(Cpic10cFinalProjectSameGameView, CView)
+    ON_WM_LBUTTONDOWN()
 END_MESSAGE_MAP()
 
 // Cpic10cFinalProjectSameGameView construction/destruction
 
-Cpic10cFinalProjectSameGameView::Cpic10cFinalProjectSameGameView() noexcept
+Cpic10cFinalProjectSameGameView::Cpic10cFinalProjectSameGameView()
 {
 	// TODO: add construction code here
 

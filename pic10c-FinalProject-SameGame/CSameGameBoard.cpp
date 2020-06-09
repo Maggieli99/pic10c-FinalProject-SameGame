@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "framework.h" // Not sure
 #include "CSameGameBoard.h"
+#include <ctime>
+#include <time.h>
 
 CSameGameBoard::CSameGameBoard() :m_arrBoard(NULL), m_nColumns(15), m_nRows(15), m_nHeight(35), m_nWidth(35), m_nRemaining(0) { 
     m_arrColors[0] = RGB(0, 0, 0);
@@ -14,7 +16,9 @@ CSameGameBoard::~CSameGameBoard() {
     DeleteBoard(); // Delete the board
 }
 
+
 void CSameGameBoard::SetupBoard() {
+    srand(time(NULL));
     //Create the board when starting running the game
     if (m_arrBoard == NULL) {
         CreateBoard();
@@ -81,7 +85,7 @@ int CSameGameBoard::DeleteBlocks(int row, int col) {
 
     // Find adjacent sidess with the same color and call recursive function to eliminate the adjacent blocks with the same color
     if ((row - 1 >= 0 && m_arrBoard[row - 1][col] == nColor) || (row + 1 < m_nRows && m_arrBoard[row + 1][col] == nColor) ||
-        (col - 1 >= 0 && m_arrBoard[row + 1][col - 1] == nColor) || (col + 1 < m_nColumns && m_arrBoard[row][col + 1] == nColor)) {
+        (col - 1 >= 0 && m_arrBoard[row][col - 1] == nColor) || (col + 1 < m_nColumns && m_arrBoard[row][col + 1] == nColor)) {
         m_arrBoard[row][col] = 0;
         nCount = 1;
         nCount += DeleteNeighborBlocks(row - 1, col, nColor, DIRECTION_DOWN);

@@ -8,7 +8,8 @@
 class Cpic10cFinalProjectSameGameView : public CView
 {
 protected: // create from serialization only
-	Cpic10cFinalProjectSameGameView() noexcept;
+	Cpic10cFinalProjectSameGameView();
+	virtual ~Cpic10cFinalProjectSameGameView();
 	DECLARE_DYNCREATE(Cpic10cFinalProjectSameGameView)
 
 // Attributes
@@ -28,7 +29,6 @@ protected:
 public:
 	void ResizeWindow();
 
-	virtual ~Cpic10cFinalProjectSameGameView();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

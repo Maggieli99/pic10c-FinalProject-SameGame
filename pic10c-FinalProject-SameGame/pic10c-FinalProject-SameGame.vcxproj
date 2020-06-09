@@ -183,7 +183,9 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CSameGameBoard.h" />
+    <ClInclude Include="CSameGameBoard.h">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
@@ -213,6 +215,7 @@
     <ResourceCompile Include="pic10cFinalProjectSameGame.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="res\pic10cFinalProjectSameGame.rc2" />
   </ItemGroup>
   <ItemGroup>

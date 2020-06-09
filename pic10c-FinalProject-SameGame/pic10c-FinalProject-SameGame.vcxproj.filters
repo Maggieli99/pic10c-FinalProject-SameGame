@@ -72,6 +72,7 @@
     <None Include="res\pic10cFinalProjectSameGame.rc2">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\pic10c-FinalProject-SameGameDoc.ico">
