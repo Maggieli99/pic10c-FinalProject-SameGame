@@ -28,7 +28,9 @@ public:
 	int GetColumns() { return m_board.GetColumns(); }
 	int GetRows() { return m_board.GetRows(); }
 	void DeleteBoard() { m_board.DeleteBoard(); }
-
+	bool IsGameOver() { return m_board.IsGameOver(); }
+	int DeleteBlocks(int row, int col) { return m_board.DeleteBlocks(row, col); }
+	int GetRemainingCount() { return m_board.GetRemainingCount(); }
 
 // Overrides
 public:

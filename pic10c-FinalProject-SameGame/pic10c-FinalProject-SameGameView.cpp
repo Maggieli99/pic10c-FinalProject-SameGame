@@ -55,36 +55,36 @@ void Cpic10cFinalProjectSameGameView::OnDraw(CDC* pDC)
 		return;
 
 	// TODO: add draw code for native data here
-    //  Save the current state of the device context
-    int nDCSave = pDC->SaveDC();
+    int nDCSave = pDC->SaveDC(); //  Save the current state of the device context
+
     //  Get the client rectangle
     CRect rcClient;
     GetClientRect(&rcClient);
-    //  Get the background color of the board
-    COLORREF clr = pDoc->GetBoardSpace(-1, -1);
-    //	Draw the background first
-    pDC->FillSolidRect(&rcClient, clr);
+
+    COLORREF clr = pDoc->GetBoardSpace(-1, -1);     //  Get the background color of the board
+    pDC->FillSolidRect(&rcClient, clr);     //	Draw the background first
+
     //  Create the brush for drawing
     CBrush br;
     br.CreateStockObject(HOLLOW_BRUSH);
     CBrush* pbrOld = pDC->SelectObject(&br);
+
     //	Draw the squares
     for (int row = 0; row < pDoc->GetRows(); row++)
     {
         for (int col = 0; col < pDoc->GetColumns(); col++)
         {
-            //  Get the color for this board space
-            clr = pDoc->GetBoardSpace(row, col);
+            clr = pDoc->GetBoardSpace(row, col);             //  Get the color for this board space
+
             //  Calculate the size and position of this space
             CRect rcBlock;
             rcBlock.top = row * pDoc->GetHeight();
             rcBlock.left = col * pDoc->GetWidth();
             rcBlock.right = rcBlock.left + pDoc->GetWidth();
             rcBlock.bottom = rcBlock.top + pDoc->GetHeight();
-            //  Fill in the block with the correct color
-            pDC->FillSolidRect(&rcBlock, clr);
-            //  Draw the block outline
-            pDC->Rectangle(&rcBlock);
+
+            pDC->FillSolidRect(&rcBlock, clr);             //  Fill in the block with the correct color
+            pDC->Rectangle(&rcBlock);             //  Draw the block outline
         }
     }
     //  Restore the device context settings
@@ -135,9 +135,11 @@ void Cpic10cFinalProjectSameGameView::ResizeWindow()
     CRect rcClient, rcWindow;
     GetClientRect(&rcClient);
     GetParentFrame()->GetWindowRect(&rcWindow);
+
     //  Calculate the difference
     int nWidthDiff = rcWindow.Width() - rcClient.Width();
     int nHeightDiff = rcWindow.Height() - rcClient.Height();
+
     //  Change the window size based on the size of the game board
     rcWindow.right = rcWindow.left +
         pDoc->GetWidth() * pDoc->GetColumns() + nWidthDiff;
@@ -148,3 +150,38 @@ void Cpic10cFinalProjectSameGameView::ResizeWindow()
 }
 
 // Cpic10cFinalProjectSameGameView message handlers
+void Cpic10cFinalProjectSameGameView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+    //  First get a pointer to the document
+    Cpic10cFinalProjectSameGameDoc* pDoc = GetDocument();
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
+
+    //  Get the row and column of the block that was clicked on
+    int row = point.y / pDoc->GetHeight();
+    int col = point.x / pDoc->GetWidth();
+
+    int count = pDoc->DeleteBlocks(row, col);     //  Delete the blocks from the document
+
+    //  Check if there were any blocks deleted
+    if (count > 0)
+    {
+        //  Force the view to redraw
+        Invalidate();   //Signal to the view that the whole client area needs to be redrawn
+        UpdateWindow(); //Redraw
+
+        //  Check if the game is over
+        if (pDoc->IsGameOver())
+        {
+            //  Get the count remaining
+            int remaining = pDoc->GetRemainingCount();
+            CString message;
+            message.Format(_T("No more moves left\nBlocks remaining: %d"), remaining);
+
+            MessageBox(message, _T("Game Over"), MB_OK | MB_ICONINFORMATION); //  Display the results to the user
+        }
+    }
+    //  Default OnLButtonDown
+    CView::OnLButtonDown(nFlags, point);
+}
