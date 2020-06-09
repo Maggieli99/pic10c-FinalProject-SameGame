@@ -6,7 +6,7 @@
 
 COLORREF CSameGameBoard::m_arrColors[6];
 
-CSameGameBoard::CSameGameBoard() :m_arrBoard(NULL), m_nColumns(15), m_nRows(15), m_nHeight(35), m_nWidth(35), m_nRemaining(0), m_nColors(5) { 
+CSameGameBoard::CSameGameBoard() :m_arrBoard(NULL), m_nColumns(15), m_nRows(15), m_nHeight(35), m_nWidth(35), m_nRemaining(0), m_nColors(3) { 
     m_arrColors[0] = RGB(0, 0, 0);
     m_arrColors[1] = RGB(255, 0, 0);
     m_arrColors[2] = RGB(255, 255, 64);

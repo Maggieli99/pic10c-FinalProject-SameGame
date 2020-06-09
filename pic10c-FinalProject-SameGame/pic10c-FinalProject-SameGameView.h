@@ -18,6 +18,7 @@ public:
 
 // Operations
 public:
+	int score = 0;
 
 // Overrides
 public:

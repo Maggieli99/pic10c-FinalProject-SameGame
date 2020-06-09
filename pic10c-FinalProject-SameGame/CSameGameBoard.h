@@ -21,7 +21,7 @@ public:
 	int DeleteBlocks(int row, int col); // Delete all adjacent blocks
 
 	int GetNumColors() { return m_nColors; } 
-	void SetNumColors(int nColors) { m_nColors >= 3 && nColors <= 5 ? nColors : m_nColors; }
+	void SetNumColors(int nColors) { m_nColors = nColors; }
 
 private:
 	void CreateBoard(); // Function to create the board and allocate memory
