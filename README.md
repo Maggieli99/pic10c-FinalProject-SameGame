@@ -16,6 +16,10 @@ constructing my own Same Game and tring to give it some simple features to make 
 The instruction(https://www.cprogramming.com/tutorial/game_programming/same_game_part1.html) I followed requires the use of
 Visual Studio. Since I am a Mac user and use Xcode for almost all of my assignment, it is the first time that I coded a whole 
 project with Visual Studio on a Windows system. I used Visual Studio 2019 with a template of MFC application to create the
-game.
+game. 
+
+MFC stands for Microsoft Foundation Class. It is an easy-to-use library when we want to create a simple application like a game. 
+
+
 With the help of this tutorial:
 https://www.youtube.com/watch?v=csgO95sbSfA, I connected Visual Studio 2019 with my Github account.
