@@ -1,7 +1,7 @@
 # Pic 10c FinalProject: The Same Game
 
 ## Idea & Introduction
-
+![Uploading Screen Shot 2020-06-14 at 19.09.37.png…]()
 
 My final project is a classical game called The Same Game. In this game, players need to find groups of two or more blocks with the same color that are next to each other vertically or horizontally. Once they find such blocks and clicks on them, the 
 blocks will be removed from the game board. Then all of the blocks that are above the ones removed will fall down. If an entire column is removed, all columns to the right will shift to the left. The goal is to remove all the blocks on the play board with the least number of clicks. The game is over when all the remaining blocks that are adjacent to each other are of different colors or there are no blocks left. 
