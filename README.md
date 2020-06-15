@@ -2,9 +2,8 @@
 
 ## Idea & Introduction
 
-
-
-<img width="563" alt="Screen Shot 2020-06-14 at 19 32 18" src="https://user-images.githubusercontent.com/63526495/84612534-c3f15080-ae75-11ea-865e-71eaa4d5f4ac.png">
+<img width="400" alt="Screen Shot 2020-06-14 at 19 40 32" src="https://user-images.githubusercontent.com/63526495/84612947-ee8fd900-ae76-11ea-8908-b8caed6d1c27.png">
+<img width="400" alt="Screen Shot 2020-06-14 at 19 32 18" src="https://user-images.githubusercontent.com/63526495/84612534-c3f15080-ae75-11ea-865e-71eaa4d5f4ac.png">
 
 
 My final project is a classical game called The Same Game. In this game, players need to find groups of two or more blocks with the same color that are next to each other vertically or horizontally. Once they find such blocks and clicks on them, the 
@@ -46,7 +45,8 @@ I checked my OnLButtonDown function and made sure that there was nothing wrong w
 http://forums.codeguru.com/showthread.php?349415-OnLButtonDown-never-gets-called
 
 Up to this point, my Same Game is playable with 3 colors. Then I added menus to control difficulty levels so that players can play with 3, 4, and 5 colors.
-<img width="627" alt="Screen Shot 2020-06-14 at 19 32 36" src="https://user-images.githubusercontent.com/63526495/84612549-ce134f00-ae75-11ea-981e-b73096bd178a.png">
+
+<img width="300" alt="Screen Shot 2020-06-14 at 19 32 36" src="https://user-images.githubusercontent.com/63526495/84612549-ce134f00-ae75-11ea-981e-b73096bd178a.png">
 
 #### Struggle:
 In order to add different color levels, I set up the event handlers for ON_COMMAND and ON_COMMAND_UPDATE_UI types of events for menus. But after I setup them and ran the code, I found that the number of colors of the blocks did not change when I chose a different level. The number of colors is always the number I assigned to m_nColors in the constructor of GameBoard class.
@@ -58,8 +58,10 @@ Correcting the mistake itself is easy for this problem. But the process that I f
 ## Improvement
 
 I created a variable "score" in the View class to store the current score of the player. I decided that every time a player deletes n blocks, he or she get (n - 1)^2 points. Also, when game is over, a MessageBox will show up telling the player number of blocks remaining and the score of the player. The other content of the MessageBox is little different based on how well the player plays. 
-<img width="562" alt="Screen Shot 2020-06-14 at 19 32 54" src="https://user-images.githubusercontent.com/63526495/84612564-d9667a80-ae75-11ea-9a34-18cdd45ce71c.png">
-<img width="565" alt="Screen Shot 2020-06-14 at 19 33 11" src="https://user-images.githubusercontent.com/63526495/84612572-e3887900-ae75-11ea-92fc-c0f48495e626.png">
+
+<img width="400" alt="Screen Shot 2020-06-14 at 19 32 54" src="https://user-images.githubusercontent.com/63526495/84612564-d9667a80-ae75-11ea-9a34-18cdd45ce71c.png">
+
+<img width="400" alt="Screen Shot 2020-06-14 at 19 33 11" src="https://user-images.githubusercontent.com/63526495/84612572-e3887900-ae75-11ea-92fc-c0f48495e626.png">
 
 ## Connections
 
