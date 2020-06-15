@@ -179,11 +179,6 @@ void Cpic10cFinalProjectSameGameView::OnLButtonDown(UINT nFlags, CPoint point)
         UpdateWindow(); //Redraw
 
         score += (count - 1) * (count - 1);
-        CString show_score;
-        show_score.Format(_T("You have %d point now!\n Good Job! Come on!"), score);
-        if (score > 3000) {
-            MessageBox(show_score, _T("Your score is more than 3000!"));
-        }
         //  Check if the game is over
         if (pDoc->IsGameOver())
         {
@@ -191,12 +186,26 @@ void Cpic10cFinalProjectSameGameView::OnLButtonDown(UINT nFlags, CPoint point)
             int remaining = pDoc->GetRemainingCount();
             CString message;
             if (remaining == 0) {
-                message.Format(_T("You win!\nYour score: %d"), score);
+		if (score > 6000) {
+	            message.Format(_T("You win!\nYour score: %d\nYou got more than 6000! Good job!!"), score);
+	            score = 0;
+		}
+		else {
+		    message.Format(_T("You win!\nYour score: %d"), score);
+		    score = 0;
+		}
             }
             else {
-                message.Format(_T("No more moves left\nBlocks remaining: %d\nYour score: %d"), remaining, score);
+		if (score > 6000) {
+		    message.Format(_T("No more moves left\nBlocks remaining: %d\nYour score: %d\nYou got more than 6000! Good job!!"), remaining, score);
+		    score = 0;
+		}
+		else {
+		    message.Format(_T("No more moves left\nBlocks remaining: %d\nYour score: %d"), remaining, score);
+		    score = 0;
+		}
             }
-
+		
             MessageBox(message, _T("Game Over"), MB_OK | MB_ICONINFORMATION); //  Display the results to the user
         }
     }
